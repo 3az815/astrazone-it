@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Arabic: switch the whole type system to Cairo, which reads far better
+     for Arabic script than Inter/Space Grotesk. */
+  html[dir='rtl'] body {
+    font-family: 'Cairo', system-ui, sans-serif;
+  }
+  html[dir='rtl'] h1,
+  html[dir='rtl'] h2,
+  html[dir='rtl'] h3,
+  html[dir='rtl'] h4 {
+    font-family: 'Cairo', system-ui, sans-serif;
+  }
+  html[dir='rtl'] .font-mono {
+    font-family: 'Cairo', system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+  }
+
+  ::selection {
+    background-color: rgba(0, 140, 255, 0.18);
+    color: #0f172a;
+  }
+
+  :focus-visible {
+    outline: 2px solid #008cff;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-az {
+    @apply mx-auto w-full max-w-7xl px-6 lg:px-10;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/[0.06] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-brand-deep font-mono;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-gradient px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:shadow-[0_0_0_1px_rgba(0,140,255,0.25),0_12px_36px_-6px_rgba(0,140,255,0.5)] hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-ink/10 bg-white px-6 py-3.5 text-sm font-semibold text-ink shadow-soft transition-all duration-300 hover:border-brand/30 hover:text-brand-deep hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .card-az {
+    @apply rounded-2xl border border-ink/[0.06] bg-white shadow-soft transition-all duration-300;
+  }
+
+  .input-az {
+    @apply w-full rounded-lg border border-ink/10 bg-surface-soft px-3.5 py-2.5 text-sm text-ink placeholder:text-ink-faint transition-colors duration-200 focus:border-brand/40 focus:bg-white focus:outline-none;
+  }
+
+  .input-az[aria-invalid='true'] {
+    @apply border-red-300;
+  }
+
+  .grid-bg {
+    background-image: linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 100%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Scroll-reveal: plain CSS transition (not a Tailwind-generated keyframe)
+   so it always compiles regardless of JIT content scanning. */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

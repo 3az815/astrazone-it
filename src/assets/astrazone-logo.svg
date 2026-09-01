@@ -1,0 +1,29 @@
+<!--
+  PLACEHOLDER LOGO — replace this file with the real AstraZone logo asset.
+  No logo file was provided in the conversation, so this wordmark stands in for it.
+  Keep the filename "astrazone-logo.svg" (or update the import in Logo.tsx) when swapping.
+-->
+<svg width="220" height="56" viewBox="0 0 220 56" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006BFF" />
+      <stop offset="100%" stop-color="#00C2FF" />
+    </linearGradient>
+  </defs>
+  <path
+    d="M28 4 L48 12 V26 C48 38 40 46 28 52 C16 46 8 38 8 26 V12 Z"
+    fill="none"
+    stroke="url(#logoGrad)"
+    stroke-width="2.5"
+  />
+  <circle cx="28" cy="24" r="2.6" fill="#00C2FF" />
+  <circle cx="20" cy="32" r="2.1" fill="#008CFF" />
+  <circle cx="36" cy="32" r="2.1" fill="#008CFF" />
+  <path d="M28 24 L20 32 M28 24 L36 32 M20 32 L36 32" stroke="#00C2FF" stroke-width="1.2" opacity="0.7" />
+  <text x="62" y="27" font-family="Space Grotesk, Inter, sans-serif" font-size="19" font-weight="700" fill="#0F172A">
+    AstraZone
+  </text>
+  <text x="62" y="43" font-family="Inter, sans-serif" font-size="10.5" font-weight="500" fill="#475569" letter-spacing="0.5">
+    IT SOLUTIONS
+  </text>
+</svg>
